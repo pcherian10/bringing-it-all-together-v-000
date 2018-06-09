@@ -42,7 +42,6 @@ class Dog
       VALUES (?,?)
       SQL
       DB[:conn].execute(sql, self.name, self.breed)
-    end
   end
 
   def update
@@ -54,6 +53,9 @@ class Dog
       DB[:conn].execute(sql, self.name, self.breed, self.id)
   end
 
-  def
+  def create (name:, breed:)
+    new_dog = self.new(name:, breed:)
+    new_dog.save
+  end
 
 end
