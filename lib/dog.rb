@@ -41,7 +41,7 @@ class Dog
       DB[:conn].execute(sql, self.name, self.breed).map do |row|
         self.new_from_db(row)
       end
-        @id = DB[:conn].execute("SELECT last_insert_rowid() FROM dogs")[0][0]
+      #@id = DB[:conn].execute("SELECT last_insert_rowid() FROM dogs")[0][0]
   end
 
   def update
