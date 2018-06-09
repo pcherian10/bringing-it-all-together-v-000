@@ -30,7 +30,7 @@ class Dog
     id = row[0]
     name = row[1]
     grade = row[2]
-    new_dog = self.new[id, name, grade]
+    new_dog = self.new(id, name, grade)
   end
 
   def save
