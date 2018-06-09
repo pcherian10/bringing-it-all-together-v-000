@@ -38,9 +38,7 @@ class Dog
       INSERT INTO dogs (name, breed)
       VALUES (?,?)
       SQL
-      DB[:conn].execute(sql, self.name, self.breed).map do |row|
-        self.new_from_db(row)
-      end
+      DB[:conn].execute(sql, self.name, self.breed)
   end
 
     def update
