@@ -26,7 +26,7 @@ class Dog
       DB[:conn].execute(sql)
   end
 
-  def self.new_from_db
+  def self.new_from_db(row)
     id = row[0]
     name = row[1]
     grade = row[2]
@@ -38,11 +38,10 @@ class Dog
         INSERT INTO dogs (name, breed)
         VALUES (?,?)
       SQL
-      DB[:conn].execute(sql, self.name, self.breed).map do|row|
-        self.new_from_db (row)
-        @id = DB[:conn].execute("SELECT last_insert_rowid() FROM dogs")[0][0]
+      DB[:conn].execute(sql, self.name, self.breed).map do |row|
+        self.new_from_db(row)
       end
-
+        @id = DB[:conn].execute("SELECT last_insert_rowid() FROM dogs")[0][0]
   end
 
   def update
